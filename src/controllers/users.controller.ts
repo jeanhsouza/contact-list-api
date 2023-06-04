@@ -1,10 +1,10 @@
 import { Request, Response } from "express";
 import { iUpdatedUser, iUserRequest } from "../interfaces/users.interface";
-// import { createUserService } from "../services/users/createUser.service";
-// import { deleteUserService } from "../services/users/deleteUser.service";
-// import { listAllUsersService } from "../services/users/listAllUsers.service";
-// import { listOnlyUserService } from "../services/users/listOnlyUser.service";
-// import { updateUserService } from "../services/users/updateUser.service";
+import { createUserService } from "../services/users/createUser.service";
+import { deleteUserService } from "../services/users/deleteUser.service";
+import { listAllUsersService } from "../services/users/listAllUsers.service";
+import { listOnlyUserService } from "../services/users/listOnlyUser.service";
+import { updateUserService } from "../services/users/updateUser.service";
 
 export const createUserController = async (
 	request: Request,

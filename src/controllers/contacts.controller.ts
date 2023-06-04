@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
 import { iUpdatedContact, iContactRequest } from "../interfaces/contacts.interface";
-// import { createContactService } from "../services/Contacts/createContact.service";
-// import { deleteContactService } from "../services/Contacts/deleteContact.service";
-// import { listAllContactsService } from "../services/Contacts/listAllContacts.service";
-// import { updateContactService } from "../services/Contacts/updateContact.service";
+import { createContactService } from "../services/contacts/createContact.service";
+import { deleteContactService } from "../services/contacts/deleteContact.service";
+import { listAllContactsService } from "../services/contacts/listAllContacts.service";
+import { updateContactService } from "../services/contacts/updateContact.service";
 
 export const createContactController = async (
 	request: Request,
