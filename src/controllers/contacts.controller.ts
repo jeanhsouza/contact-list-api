@@ -10,8 +10,9 @@ export const createContactController = async (
 	response: Response
 ) => {
 	const contactData: iContactRequest = request.body;
+	const userID: number = parseInt(response.locals.userId)
 
-	const newContact = await createContactService(contactData);
+	const newContact = await createContactService(contactData, userID);
 
 	return response.status(201).json(newContact);
 };
@@ -20,7 +21,8 @@ export const listAllContactController = async (
 	request: Request,
 	response: Response
 ) => {
-	const allContacts = await listAllContactsService(request);
+	const userID: number = parseInt(response.locals.userId)
+	const allContacts = await listAllContactsService(request, userID);
 
 	return response.json(allContacts);
 };
@@ -41,9 +43,9 @@ export const updateContactController = async (
 	response: Response
 ) => {
 	const contactData: iUpdatedContact = request.body;
-	const idContact = parseInt(request.params.id);
+	const contactID = parseInt(request.params.id);
 
-	const updatedContact = await updateContactService(contactData, idContact);
+	const updatedContact = await updateContactService(contactData, contactID);
 
 	return response.json(updatedContact);
 };

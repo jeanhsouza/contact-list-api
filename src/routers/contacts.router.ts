@@ -7,6 +7,7 @@ import {
 } from "../controllers/contacts.controller";
 import {
 	ensureTokenMiddleware,
+	ensureValidTokenMiddleware,
 	validateBodyMiddleware
 } from "../middlewares/users.middleware";
 import {
@@ -19,16 +20,17 @@ export const contactsRoutes: Router = Router();
 
 contactsRoutes.post(
 	"",
+	ensureValidTokenMiddleware,
 	validateBodyMiddleware(contactRequestSchema),
 	createContactController
 );
 
-contactsRoutes.get("", ensureTokenMiddleware, listAllContactController);
+contactsRoutes.get("", ensureValidTokenMiddleware, listAllContactController);
 
 contactsRoutes.patch(
 	"/:id",
 	validateContactExistMiddleware,
-	ensureTokenMiddleware,
+	ensureValidTokenMiddleware,
 	validateBodyMiddleware(updatedContactSchema),
 	updateContactController
 );
@@ -36,6 +38,6 @@ contactsRoutes.patch(
 contactsRoutes.delete(
 	"/:id",
 	validateContactExistMiddleware,
-	ensureTokenMiddleware,
+	ensureValidTokenMiddleware,
 	deleteContactController
 );

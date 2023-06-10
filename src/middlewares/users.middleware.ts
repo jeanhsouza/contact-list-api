@@ -6,6 +6,7 @@ import { User } from "../entities/users.entity";
 import { AppDataSource } from "../data-source";
 import { UserRequiredKeys } from "../interfaces/users.interface";
 import { verify } from "jsonwebtoken";
+import jwt from "jsonwebtoken"
 
 export const validateUserExistMiddleware = async (
 	request: Request,
@@ -103,7 +104,7 @@ export const ensureTokenMiddleware = (
 			throw new AppError(error.message, 401);
 		}
 
-		const userID: number = parseInt(request.params.id);
+		const userID: number = parseInt(response.locals.userId);
 		const userRepository: Repository<User> = AppDataSource.getRepository(User);
 
 		const findUser = await userRepository.findOne({
@@ -132,13 +133,17 @@ export const ensureValidTokenMiddleware = (
 
 	const token: string = authToken.split(" ")[1];
 
-	return verify(token, process.env.SECRET_KEY!, async (error, decoded: any) => {
-		if (error) {
-			throw new AppError(error.message, 401);
-		}
+	jwt.verify(token, process.env.SECRET_KEY!, (error: any, decoded: any) => {
+        if (error) {
+            return response.status(401).json({
+                message: "invalid token"
+            })
+        }
 
-		return next();
-	});
+        response.locals.userId = decoded.sub
+
+        return next()
+    })
 };
 
 

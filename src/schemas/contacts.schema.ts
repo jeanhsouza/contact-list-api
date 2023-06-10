@@ -1,12 +1,12 @@
 import { z } from "zod";
-import { userSchema } from "./users.schema";
+import { userResultSchema } from "./users.schema";
 
 export const contactSchema = z.object({
 	id: z.number(),
 	name: z.string(),
 	email: z.string().email(),
     fone: z.string().min(11),
-	user: userSchema,
+	user: userResultSchema,
 });
 
 export const contactRequestSchema = contactSchema
@@ -21,4 +21,4 @@ export const contactsResultSchema = contactSchema
 
 export const updatedContactSchema = contactRequestSchema
 
-export const allContactResultSchema = contactResultSchema.array();
+export const allContactResultSchema = contactSchema.array();

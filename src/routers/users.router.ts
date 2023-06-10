@@ -8,6 +8,7 @@ import {
 } from "../controllers/users.controller";
 import {
 	ensureTokenMiddleware,
+	ensureValidTokenMiddleware,
 	validateBodyMiddleware,
 	validateEmailExistsMiddleware,
 	validateUserExistMiddleware,
@@ -25,7 +26,7 @@ usersRoutes.post(
 	validateBodyMiddleware(userRequestSchema),
 	createUserController
 );
-usersRoutes.get("", ensureTokenMiddleware, listAllUserController);
+usersRoutes.get("", ensureValidTokenMiddleware, listAllUserController);
 usersRoutes.get(
 	"/:id",
 	validateUserExistMiddleware,

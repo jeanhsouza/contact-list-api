@@ -6,12 +6,12 @@ import { contactResultSchema } from "../../schemas/contacts.schema";
 
 export const updateContactService = async (
 	newContactData: iUpdatedContact,
-	idContact: number
+	contactID: number
 ): Promise<iContactResult> => {
 	const contactRepository: Repository<Contact> = AppDataSource.getRepository(Contact);
 
 	const oldContactData = await contactRepository.findOneBy({
-		id: idContact,
+		id: contactID,
 	});
 
 	const contact = contactRepository.create({

@@ -40,7 +40,7 @@ export class User {
 
 	@OneToMany(
 		() => Contact,
-		(Contact) => Contact.user
+		contact => contact.user
 	)
 	contacts: Contact[];
 
