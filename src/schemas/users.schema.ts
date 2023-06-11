@@ -20,6 +20,6 @@ export const userRequestSchema = userSchema.omit({
 
 export const userResultSchema = userSchema.omit({ password: true });
 
-export const updatedUserSchema = userRequestSchema
+export const updatedUserSchema = userRequestSchema.partial();
 
 export const allUserResultSchema = userResultSchema.array();

@@ -41,24 +41,6 @@ export const validateEmailExistsMiddleware = async (
 ): Promise<Response | void> => {
 	const { email } = request.body;
 
-	const payloadKeys: string[] = Object.keys(request.body);
-	const requiredKeys: UserRequiredKeys[] = ["name", "email", "password"];
-
-	const filteredKeys: string[] = requiredKeys.filter(
-		(elem) => !payloadKeys.includes(elem)
-	);
-
-	const hasRequiredKeys: boolean = requiredKeys.some((key: any) =>
-		payloadKeys.includes(key)
-	);
-
-	if (!hasRequiredKeys) {
-		throw new AppError(
-			"At least one of those keys must be send: (name, email or password)",
-			400
-		);
-	}
-
 	const userRepository: Repository<User> = AppDataSource.getRepository(User);
 
 	if (email) {

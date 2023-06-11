@@ -11,5 +11,5 @@ export const deleteContactService = async (idContact: number): Promise<void> => 
 		},
 	});
 
-	await contactRepository.softRemove(contact!);
+	await contactRepository.remove(contact!);
 };

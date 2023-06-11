@@ -16,7 +16,7 @@ export type iUserRequest = z.infer<typeof userRequestSchema>;
 
 export type iUpdatedUserResponse = z.infer<typeof updatedUserSchema>;
 
-export type iUpdatedUser = DeepPartial<iUpdatedUserResponse>;
+export type iUpdatedUser = DeepPartial<iUserRequest>;
 
 export type iUserResult = z.infer<typeof userResultSchema>;
 

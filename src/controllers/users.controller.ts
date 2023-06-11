@@ -30,7 +30,7 @@ export const listOnlyUserController = async (
 	request: Request,
 	response: Response
 ) => {
-	const idUser = parseInt(request.params.id);
+	const idUser = parseInt(response.locals.userId);
 
 	const onlyUser = await listOnlyUserService(idUser);
 
@@ -41,7 +41,7 @@ export const deleteUserController = async (
 	request: Request,
 	response: Response
 ) => {
-	const idUser = parseInt(request.params.id);
+	const idUser = parseInt(response.locals.userId);
 
 	await deleteUserService(idUser);
 
@@ -53,7 +53,7 @@ export const updateUserController = async (
 	response: Response
 ) => {
 	const userData: iUpdatedUser = request.body;
-	const idUser = parseInt(request.params.id);
+	const idUser = parseInt(response.locals.userId);
 
 	const updatedUser = await updateUserService(userData, idUser);
 

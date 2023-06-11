@@ -20,7 +20,6 @@ export const updateUserService = async (
 	});
 
 	await userRepository.save(user);
-
 	const updatedUser = userResultSchema.parse(user);
 
 	return updatedUser;

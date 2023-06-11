@@ -15,10 +15,8 @@ export const contactRequestSchema = contactSchema
 		user: true,
 	})
 
-export const contactResultSchema = contactSchema.omit({ id: true });
+export const contactResultSchema = contactSchema
 
-export const contactsResultSchema = contactSchema
-
-export const updatedContactSchema = contactRequestSchema
+export const updatedContactSchema = contactRequestSchema.partial()
 
 export const allContactResultSchema = contactSchema.array();

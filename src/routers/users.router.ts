@@ -28,22 +28,22 @@ usersRoutes.post(
 );
 usersRoutes.get("", ensureValidTokenMiddleware, listAllUserController);
 usersRoutes.get(
-	"/:id",
-	validateUserExistMiddleware,
+	"/profile",
+	ensureValidTokenMiddleware,
 	ensureTokenMiddleware,
 	listOnlyUserController
 );
 usersRoutes.patch(
-	"/:id",
-	validateUserExistMiddleware,
+	"",
+	ensureValidTokenMiddleware,
 	ensureTokenMiddleware,
 	validateBodyMiddleware(updatedUserSchema),
 	validateEmailExistsMiddleware,
 	updateUserController
 );
 usersRoutes.delete(
-	"/:id",
-	validateUserExistMiddleware,
+	"",
+	ensureValidTokenMiddleware,
 	ensureTokenMiddleware,
 	deleteUserController
 );

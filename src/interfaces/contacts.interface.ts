@@ -16,7 +16,7 @@ export type iContactRequest = z.infer<typeof contactRequestSchema>;
 
 export type iUpdatedContactResponse = z.infer<typeof updatedContactSchema>;
 
-export type iUpdatedContact = DeepPartial<iUpdatedContactResponse>;
+export type iUpdatedContact = DeepPartial<iContactRequest>;
 
 export type iContactResult = z.infer<typeof contactResultSchema>;
 
