@@ -10,7 +10,7 @@
 		"dev": "tsnd --cls --rs src/server.ts",
 		"typeorm": "typeorm-ts-node-commonjs",
 		"build": "tsc",
-		"start": "node dist/server.js"
+    "start": "node dist/server.js"
 	},
 	"dependencies": {
 		"bcryptjs": "^2.4.3",
