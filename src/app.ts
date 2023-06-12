@@ -4,7 +4,7 @@ import express, { Application } from "express";
 import { handleErrors } from "./errors";
 import { usersRoutes, loginRoute } from "./routers";
 import { contactsRoutes } from "./routers/contacts.router";
-const path = require('path');
+const path = require("path");
 
 const app: Application = express();
 app.use(cors());
@@ -14,11 +14,10 @@ app.use("/users", usersRoutes);
 app.use("/login", loginRoute);
 app.use("/contacts", contactsRoutes);
 
-const docsPath = path.join(__dirname, 'docs');
+const docsPath = path.join(__dirname, "./docs");
 
-app.use('/docs', express.static(docsPath));
+app.use("/docs", express.static(docsPath));
 
 app.use(handleErrors);
 
 export default app;
-
