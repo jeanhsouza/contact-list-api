@@ -7,7 +7,7 @@ import { contactsRoutes } from "./routers/contacts.router";
 
 const app: Application = express();
 const path = require("path");
-const docsPath = path.join(__dirname, "docs");
+const docsPath = path.join(__dirname, ("docs" || ".dist/docs"));
 app.use(cors());
 app.use(express.json());
 
