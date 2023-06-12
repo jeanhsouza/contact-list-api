@@ -16,10 +16,6 @@ app.use("/login", loginRoute);
 app.use("/contacts", contactsRoutes);
 app.use('/docs', express.static(docsPath));
 
-app.get('/docs', (req, res) => {
-  res.sendFile(path.join(docsPath, 'index.html'));
-});
-
 app.use(handleErrors);
 
 export default app;
