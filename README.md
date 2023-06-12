@@ -6,6 +6,9 @@
   <h2>Contacts</h2>
   <p>A collection of endpoints for managing contacts.</p>
   
+  <h2>Deploy</h2>
+  <p>https://contact-list-api-lepu.onrender.com</p>
+  
   <h3>Delete Contact</h3>
   <pre class="code">
     DELETE /contacts/1
